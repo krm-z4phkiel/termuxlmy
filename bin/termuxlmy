@@ -1,0 +1,73 @@
+#!/bin/bash
+# 🧠 Termux LMY - Local Memory for You
+
+case "$1" in
+    setup)
+        echo "🧠 Setting up Termux LMY..."
+        mkdir -p ~/.hermes/memories/Sessions
+        
+        # Initialize database
+        python3 << 'PYEOF'
+import sqlite3, os
+DB = os.path.expanduser("~/.hermes/memory_store.db")
+conn = sqlite3.connect(DB)
+c = conn.cursor()
+c.execute("CREATE TABLE IF NOT EXISTS facts (fact_id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL, category TEXT, tags TEXT, trust_score REAL DEFAULT 0.5, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)")
+c.execute("CREATE TABLE IF NOT EXISTS entities (entity_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, entity_type TEXT, aliases TEXT)")
+c.execute("CREATE TABLE IF NOT EXISTS fact_entities (fact_id INTEGER, entity_id INTEGER)")
+conn.commit()
+conn.close()
+print("✅ Database initialized!")
+PYEOF
+        
+        echo "✅ Setup complete!"
+        echo "Run: termuxlmy status"
+        ;;
+    
+    status)
+        echo "🧠 Termux LMY Status"
+        echo "├── Memory: $(ls ~/.hermes/memories/*.md 2>/dev/null | wc -l) files"
+        echo "├── Database: $(ls -la ~/.hermes/memory_store.db 2>/dev/null | awk '{print $5}' || echo 'Not found') bytes"
+        echo "├── Sessions: $(ls ~/.hermes/memories/Sessions/*.md 2>/dev/null | wc -l) logs"
+        ;;
+    
+    add)
+        shift
+        CONTENT="$*"
+        python3 -c "
+import sqlite3, os
+DB = os.path.expanduser('~/.hermes/memory_store.db')
+conn = sqlite3.connect(DB)
+c = conn.cursor()
+c.execute('INSERT INTO facts (content, category) VALUES (?, ?)', ('$CONTENT', 'manual'))
+conn.commit()
+conn.close()
+print('✅ Added: $CONTENT')
+"
+        ;;
+    
+    search)
+        shift
+        QUERY="$*"
+        python3 -c "
+import sqlite3, os
+DB = os.path.expanduser('~/.hermes/memory_store.db')
+conn = sqlite3.connect(DB)
+c = conn.cursor()
+c.execute('SELECT content, category, trust_score FROM facts WHERE content LIKE ?', ('%$QUERY%',))
+for row in c.fetchall():
+    print(f'[{row[1]}] {row[0]} (trust: {row[2]})')
+conn.close()
+"
+        ;;
+    
+    *)
+        echo "🧠 Termux LMY - Local Memory for You"
+        echo ""
+        echo "Commands:"
+        echo "  termuxlmy setup    — Initialize memory system"
+        echo "  termuxlmy status   — Check status"
+        echo "  termuxlmy add <text> — Add a fact"
+        echo "  termuxlmy search <query> — Search facts"
+        ;;
+esac
