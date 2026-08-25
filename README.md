@@ -32,7 +32,7 @@
   <a href="README.en.md">English</a> &bull;
   <a href="#-sebelum--sesudah">Before/After</a> &bull;
   <a href="#-fitur">Fitur</a> &bull;
-  <a href="#-instalasi-30-detik">Instalasi</a> &bull;
+  <a href="#-instalasi">Instalasi</a> &bull;
   <a href="#-cara-pakai">Cara Pakai</a> &bull;
   <a href="#-kompatibilitas">Kompatibilitas</a> &bull;
   <a href="#-faq">FAQ</a> &bull;
@@ -151,7 +151,7 @@ Itulah MEMORY ASOSIATIF — dan termuxlmy memberikannya ke AI.
 
 ---
 
-## 📦 Instalasi (30 Detik)
+## 📦 Instalasi
 
 ### Prasyarat
 
@@ -316,7 +316,7 @@ MIT License — Lihat [LICENSE](LICENSE) untuk detail.
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ untuk komunitas Termux & AI
+  Dibuat untuk komunitas Termux & AI
   <br/>
   <br/>
   <a href="https://github.com/krm-z4phkiel/termuxlmy">

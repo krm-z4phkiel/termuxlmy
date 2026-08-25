@@ -32,7 +32,7 @@
   <a href="README.md">Bahasa Indonesia</a> &bull;
   <a href="#-before--after">Before/After</a> &bull;
   <a href="#-features">Features</a> &bull;
-  <a href="#-installation-30-seconds">Install</a> &bull;
+  <a href="#-installation">Install</a> &bull;
   <a href="#-usage">Usage</a> &bull;
   <a href="#-compatibility">Compatibility</a> &bull;
   <a href="#-faq">FAQ</a> &bull;
@@ -151,7 +151,7 @@ That's ASSOCIATIVE MEMORY — and termuxlmy gives it to your AI.
 
 ---
 
-## 📦 Installation (30 Seconds)
+## 📦 Installation
 
 ### Prerequisites
 
@@ -316,7 +316,7 @@ MIT License — See [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  Made with ❤️ for the Termux & AI community
+  Built for the Termux & AI community
   <br/>
   <br/>
   <a href="https://github.com/krm-z4phkiel/termuxlmy">
