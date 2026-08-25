@@ -7,7 +7,7 @@
 <p align="center">
   <strong>Local Memory for AI Agents on Termux</strong>
   <br/>
-  <em>Buat AI Agent punya ingatan seperti manusia — asosiatif, persisten, 100% lokal</em>
+  <em>Give your AI agent human-like memory — associative, persistent, 100% local</em>
   <br/>
   <br/>
   <a href="https://github.com/krm-z4phkiel/termuxlmy/blob/main/LICENSE">
@@ -29,102 +29,102 @@
 </p>
 
 <p align="center">
-  <a href="README.en.md">English</a> &bull;
-  <a href="#-sebelum--sesudah">Before/After</a> &bull;
-  <a href="#-fitur">Fitur</a> &bull;
-  <a href="#-instalasi">Instalasi</a> &bull;
-  <a href="#-cara-pakai">Cara Pakai</a> &bull;
-  <a href="#-kompatibilitas">Kompatibilitas</a> &bull;
+  <a href="README.md">Bahasa Indonesia</a> &bull;
+  <a href="#-before--after">Before/After</a> &bull;
+  <a href="#-features">Features</a> &bull;
+  <a href="#-installation">Install</a> &bull;
+  <a href="#-usage">Usage</a> &bull;
+  <a href="#-compatibility">Compatibility</a> &bull;
   <a href="#-faq">FAQ</a> &bull;
-  <a href="#-kontribusi">Kontribusi</a>
+  <a href="#-contributing">Contributing</a>
 </p>
 
 ---
 
-## 🤔 Masalah
+## 😩 The Problem
 
-Kamu pakai AI Agent — Hermes, Ollama, LangChain, atau yang lain.
+You use an AI Agent — Hermes, Ollama, LangChain, or anything else.
 
-Setiap kali chat baru:
+Every new chat session:
 
 ```
-Kamu: "Hai, nama saya Andi"
-AI:   "Halo Andi!"
+You:  "Hi, my name is Andi"
+AI:   "Hello Andi!"
 
-[sesi baru]
+[session restart]
 
-Kamu: "Hai, nama saya..."
-AI:   "Siapa nama kamu?"
+You:  "Hi, my name is..."
+AI:   "What's your name?"
 ```
 
-> *"Bayangkan punya teman yang setiap kali ketemu bertanya:*
-> *'Siapa nama kamu?' — Itulah AI tanpa memory."*
+> *"Imagine having a friend who asks you every time you meet:*
+> *"What's your name?" — That's AI without memory."*
 
 ---
 
-## 🔧 Sebelum / Sesudah
+## 🔧 Before / After
 
-### Sebelum (AI tanpa termuxlmy)
-
-```
-Kamu:  "Buat function untuk hitung diskon"
-AI:    *install 3 library baru*
-       *buat 50 baris code*
-       *tambah abstract factory pattern*
-       
-Result: Over-engineered, boros token, lambat
-```
-
-### Sesudah (AI dengan termuxlmy)
+### Before (AI without termuxlmy)
 
 ```
-Kamu:  "Buat function untuk hitung diskon"
-AI:    *recall: user suka code minimal*
-       *recall: project pakai Python stdlib*
-       *tulis 3 baris*
-
-Result: Simple, cepat, sesuai preferensi
+You:  "Build a function to calculate discounts"
+AI:   *installs 3 new libraries*
+      *writes 50 lines of code*
+      *adds abstract factory pattern*
+      
+Result: Over-engineered, wasteful, slow
 ```
 
-| Metric | Tanpa termuxlmy | Dengan termuxlmy |
-|--------|----------------|------------------|
-| **Ingatan** | ❌ Lupa setiap sesi | ✅ Ingat selamanya |
-| **Preferensi** | ❌ Tebak-tebakan | ✅ Tersimpan |
-| **Fakta** | ❌ Hilang | ✅ Persisten |
-| **Koneksi** | ❌ Tidak ada | ✅ Associative |
-| **Biaya** | 💸 Boros token | 💰 Hemat token |
+### After (AI with termuxlmy)
+
+```
+You:  "Build a function to calculate discounts"
+AI:   *recalls: user prefers minimal code*
+      *recalls: project uses Python stdlib*
+      *writes 3 lines*
+
+Result: Simple, fast, matches preferences
+```
+
+| Metric | Without termuxlmy | With termuxlmy |
+|--------|-------------------|----------------|
+| **Memory** | ❌ Forgets every session | ✅ Remembers forever |
+| **Preferences** | ❌ Guessing game | ✅ Stored |
+| **Facts** | ❌ Lost | ✅ Persistent |
+| **Connections** | ❌ None | ✅ Associative |
+| **Cost** | 💸 Wastes tokens | 💰 Saves tokens |
 
 ---
 
-## ✨ Fitur
+## ✨ Features
 
-| Fitur | Deskripsi |
-|-------|-----------|
-| 🧠 **Holographic Memory** | SQLite + FTS5 + trust scoring — seperti otak manusia |
-| 🔗 **Knowledge Graph** | Fakta saling terhubung — "apel" → "merah", "buah", "Newton" |
-| 👤 **Entity Resolution** | Auto-detect orang, tools, tempat dari percakapan |
-| 🔍 **Full-text Search** | Cari ingatan dengan cepat menggunakan FTS5 |
-| 📊 **Trust Scoring** | Fakta dinilai kebenarannya — tidak semua info sama |
-| 🔄 **Auto-extract** | Otomatis ekstrak fakta dari percakapan |
-| 📁 **Markdown-based** | Mudah dibaca & diedit manual oleh manusia |
-| 🔐 **Encryption** | Enkripsi database dengan AES-256 (opsional) |
-| ☁️ **GitHub Backup** | Sync ke GitHub private repo (opsional) |
-| 📱 **Termux Native** | Dibuat khusus untuk Android/Termux |
+| Feature | Description |
+|---------|-------------|
+| 🧠 **Holographic Memory** | SQLite + FTS5 + trust scoring — like a human brain |
+| 🔗 **Knowledge Graph** | Facts connect to each other — "apple" → "red", "fruit", "Newton" |
+| 👤 **Entity Resolution** | Auto-detect people, tools, places from conversation |
+| 🔍 **Full-text Search** | Search memories fast using FTS5 |
+| 📊 **Trust Scoring** | Facts rated by reliability — not all info is equal |
+| 🔄 **Auto-extract** | Automatically extract facts from conversations |
+| 📁 **Markdown-based** | Easy to read & edit manually by humans |
+| 🔐 **Encryption** | AES-256 database encryption (optional) |
+| ☁️ **GitHub Backup** | Sync to GitHub private repo (optional) |
+| 📱 **Termux Native** | Built specifically for Android/Termux |
 
 ---
 
-## 🧠 Bagaimana Cara Kerjanya
+## 🧠 How It Works
 
 ```
-SEBELUM termuxlmy:
+WITHOUT termuxlmy:
 ╔══════════════════════════════════════╗
-║  USER  →  AI AGENT  →  JAWABAN     ║
-║          (lupa semua)               ║
+║  USER  →  AI AGENT  →  ANSWER      ║
+║          (forgets everything)       ║
 ╚══════════════════════════════════════╝
 
-SESUDAH termuxlmy:
+WITH termuxlmy:
 ╔══════════════════════════════════════╗
-║  USER  →  AI AGENT  →  JAWABAN     ║
+║  USER  →  AI AGENT  →  ANSWER      ║
 ║              ↕                      ║
 ║         🧠 termuxlmy               ║
 ║         ┌─────────────┐            ║
@@ -136,24 +136,24 @@ SESUDAH termuxlmy:
 ╚══════════════════════════════════════╝
 ```
 
-### Analogi: Otak Manusia
+### Analogy: The Human Brain
 
 ```
-Ketika kamu dengar "apel":
-  🍎 Apel → 🔴 Merah
-           → 🍬 Manis
-           → 🌳 Pohon
-           → 🍎 Buah
-           → 🍎 Newton
+When you hear "apple":
+  🍎 Apple → 🔴 Red
+            → 🍬 Sweet
+            → 🌳 Tree
+            → 🍎 Fruit
+            → 🍎 Newton
 
-Itulah MEMORY ASOSIATIF — dan termuxlmy memberikannya ke AI.
+That's ASSOCIATIVE MEMORY — and termuxlmy gives it to your AI.
 ```
 
 ---
 
-## 📦 Instalasi
+## 📦 Installation
 
-### Prasyarat
+### Prerequisites
 
 ```bash
 # Update system
@@ -186,19 +186,19 @@ termuxlmy setup
 
 ---
 
-## 🚀 Cara Pakai
+## 🚀 Usage
 
 ### Commands
 
 ```bash
-termuxlmy setup          # Inisialisasi memory
-termuxlmy status         # Cek status
-termuxlmy add "fakta"    # Tambah fakta
-termuxlmy search "query" # Cari ingatan
-termuxlmy backup         # Backup ke GitHub
+termuxlmy setup          # Initialize memory
+termuxlmy status         # Check status
+termuxlmy add "fact"     # Add a fact
+termuxlmy search "query" # Search memories
+termuxlmy backup         # Backup to GitHub
 ```
 
-### Contoh Penggunaan
+### Example
 
 ```bash
 $ termuxlmy status
@@ -209,20 +209,20 @@ $ termuxlmy status
 ├── Entities: 19
 └── Relationships: 14
 
-$ termuxlmy add "User adalah mahasiswa TI"
-✅ Added: User adalah mahasiswa TI
+$ termuxlmy add "User is a CS student"
+✅ Added: User is a CS student
 
-$ termuxlmy search "mahasiswa"
-[manual] User adalah mahasiswa TI (trust: 0.5)
+$ termuxlmy search "student"
+[manual] User is a CS student (trust: 0.5)
 ```
 
-### Struktur Memory
+### Memory Structure
 
 ```
 ~/.hermes/
 ├── memories/
 │   ├── MEMORY.md              ← Central hub
-│   ├── User Profile.md        ← Info user
+│   ├── User Profile.md        ← User info
 │   ├── Tools Reference.md     ← Tools
 │   ├── Config Reference.md    ← Settings
 │   └── Sessions/
@@ -233,9 +233,9 @@ $ termuxlmy search "mahasiswa"
 
 ---
 
-## 🔍 Kompatibilitas
+## 🔍 Compatibility
 
-### ✅ Agent yang Kompatibel
+### ✅ Compatible Agents
 
 | Agent | Platform | Status |
 |-------|----------|--------|
@@ -249,74 +249,74 @@ $ termuxlmy search "mahasiswa"
 | [LM Studio](https://lmstudio.ai) | Local | ✅ |
 | Custom Agent (Python) | Any | ✅ |
 
-### ❌ Agent yang Tidak Kompatibel
+### ❌ Incompatible Agents
 
-| Agent | Alasan |
+| Agent | Reason |
 |-------|--------|
-| ChatGPT (API) | Cloud-only, tidak ada akses file |
-| Claude (API) | Cloud-only, tidak bisa baca file local |
-| Gemini (Web) | Tidak punya filesystem access |
+| ChatGPT (API) | Cloud-only, no file access |
+| Claude (API) | Cloud-only, can't read local files |
+| Gemini (Web) | No filesystem access |
 | Copilot | Cloud-based, no local storage |
-| Perplexity | Search engine, bukan agent |
+| Perplexity | Search engine, not an agent |
 | Poe | Chat aggregator, no file access |
 
-### 🔑 Syarat Kompatibilitas
+### 🔑 Compatibility Requirements
 
 ```
-Agent HARUS punya:
-├── ✅ File System Access (baca + tulis)
+Agent MUST have:
+├── ✅ File System Access (read + write)
 ├── ✅ Terminal/Shell Access
-├── ✅ Python Runtime (untuk SQLite)
+├── ✅ Python Runtime (for SQLite)
 └── ✅ Network Access (optional)
 
-Intinya: Selama agent bisa baca file & jalankan Python,
-         agent bisa pakai termuxlmy!
+Bottom line: If the agent can read files & run Python,
+             it can use termuxlmy!
 ```
 
 ---
 
 ## 🤔 FAQ
 
-**Q: Apakah data saya aman?**
-> Ya! Semua data tersimpan lokal di HP kamu. Tidak ada yang dikirim ke cloud (kecuali kamu backup manual).
+**Q: Is my data safe?**
+> Yes! All data is stored locally on your phone. Nothing is sent to the cloud (unless you manually backup to GitHub).
 
-**Q: Berapa RAM yang dibutuhkan?**
-> Minimal 2 GB RAM. termuxlmy menggunakan ~100-200 MB.
+**Q: How much RAM does it need?**
+> Minimum 2 GB RAM. termuxlmy uses ~100-200 MB.
 
-**Q: Bisa dipakai dengan AI selain Hermes?**
-> Bisa! System ini universal. Lihat [kompatibilitas](#-kompatibilitas).
+**Q: Can I use it with AI other than Hermes?**
+> Yes! This system is universal. See [compatibility](#-compatibility).
 
-**Q: Apakah gratis?**
-> Ya! 100% gratis. Tidak butuh API key, tidak butuh cloud service.
+**Q: Is it free?**
+> Yes! 100% free. No API keys needed, no cloud service required.
 
-**Q: Bagaimana backup data?**
-> Gunakan `termuxlmy backup` untuk sync ke GitHub (private repo).
+**Q: How do I backup my data?**
+> Use `termuxlmy backup` to sync to GitHub (private repo).
 
-**Q: Kenapa pakai SQLite?**
-> SQLite adalah database paling populer di dunia. Ringan, cepat, tidak butuh server.
+**Q: Why SQLite?**
+> SQLite is the world's most popular database. Lightweight, fast, no server required.
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Contributing
 
-Kontribusi sangat dipersilakan!
+Contributions are welcome!
 
-1. Fork repository ini
-2. Buat branch baru (`git checkout -b fitur-baru`)
-3. Commit perubahan (`git commit -m 'Tambah fitur baru'`)
-4. Push ke branch (`git push origin fitur-baru`)
-5. Buka Pull Request
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature-new`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature-new`)
+5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-MIT License — Lihat [LICENSE](LICENSE) untuk detail.
+MIT License — See [LICENSE](LICENSE) for details.
 
 ---
 
 <p align="center">
-  Dibuat untuk komunitas Termux & AI
+  Built for the Termux & AI community
   <br/>
   <br/>
   <a href="https://github.com/krm-z4phkiel/termuxlmy">
