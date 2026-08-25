@@ -1,9 +1,9 @@
 #!/bin/bash
-# 🧠 Termux LMY - Local Memory for You
+# 🧠 termuxlmy - Local Memory for You
 
 case "$1" in
     setup)
-        echo "🧠 Setting up Termux LMY..."
+        echo "🧠 Setting up termuxlmy..."
         mkdir -p ~/.hermes/memories/Sessions
         
         # Initialize database
@@ -25,7 +25,7 @@ PYEOF
         ;;
     
     status)
-        echo "🧠 Termux LMY Status"
+        echo "🧠 termuxlmy Status"
         echo "├── Memory: $(ls ~/.hermes/memories/*.md 2>/dev/null | wc -l) files"
         echo "├── Database: $(ls -la ~/.hermes/memory_store.db 2>/dev/null | awk '{print $5}' || echo 'Not found') bytes"
         echo "├── Sessions: $(ls ~/.hermes/memories/Sessions/*.md 2>/dev/null | wc -l) logs"
@@ -62,7 +62,7 @@ conn.close()
         ;;
     
     *)
-        echo "🧠 Termux LMY - Local Memory for You"
+        echo "🧠 termuxlmy - Local Memory for You"
         echo ""
         echo "Commands:"
         echo "  termuxlmy setup    — Initialize memory system"

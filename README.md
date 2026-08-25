@@ -1,4 +1,4 @@
-# 🧠 Termux LMY
+# 🧠 termuxlmy
 
 > **Local Memory for You** — Sistem ingatan lokal untuk AI Agent di Termux
 
@@ -53,10 +53,10 @@ AI modern (LLM) hanya punya:
 Setiap session = mulai dari kosong
 ```
 
-### Solusi: Termux LMY
+### Solusi: termuxlmy
 
 ```
-Termux LMY memberikan AI Agent:
+termuxlmy memberikan AI Agent:
 ├── 🧠 Long-term memory → ingat selamanya
 ├── 🔗 Associative memory → fakta saling terhubung
 ├── 💾 Persistent storage → data tersimpan lokal
@@ -180,7 +180,7 @@ pkg update && pkg upgrade -y
 pkg install python git curl openssl-tool -y
 ```
 
-### Langkah 4: Install Termux LMY
+### Langkah 4: Install termuxlmy
 
 **One-line install:**
 
@@ -219,7 +219,7 @@ termuxlmy status
 
 Harusnya menunjukkan:
 ```
-🧠 Termux LMY Status
+🧠 termuxlmy Status
 ├── Memory: ✅ Active (14 facts)
 ├── Knowledge Graph: ✅ Active (19 entities)
 ├── Cross-links: ✅ 28 connections
@@ -466,6 +466,98 @@ telegram (platform)
 - [Troubleshooting](docs/TROUBLESHOOT.md)
 
 ---
+
+
+---
+
+## 🔍 Kompatibilitas Agent AI
+
+### ✅ Agent YANG BISA Pakai termuxlmy
+
+| Agent | Platform | Akses File | Status |
+|-------|----------|-----------|--------|
+| **Hermes** | Termux/Android | ✅ Full | ✅ Compatible |
+| **Ollama** | Local PC/Server | ✅ Full | ✅ Compatible |
+| **LangChain** | Framework | ✅ Full | ✅ Compatible |
+| **AutoGPT** | Local | ✅ Full | ✅ Compatible |
+| **Open Interpreter** | Terminal | ✅ Full | ✅ Compatible |
+| **PrivateGPT** | Local | ✅ Full | ✅ Compatible |
+| **AnythingLLM** | Local | ✅ Full | ✅ Compatible |
+| **LM Studio** | Local | ✅ Full | ✅ Compatible |
+| **LocalAI** | Local | ✅ Full | ✅ Compatible |
+| **Custom Agent** | Any (Python) | ✅ Full | ✅ Compatible |
+
+### ❌ Agent YANG TIDAK BISA Pakai termuxlmy
+
+| Agent | Alasan | Solusi Alternatif |
+|-------|--------|-------------------|
+| **ChatGPT (API)** | Cloud-only, tidak ada akses file local | Pakai ChatGPT Plus + Code Interpreter |
+| **Claude (API)** | Cloud-only, tidak bisa baca file kamu | Pakai Claude Projects (limited) |
+| **Gemini (Web)** | Tidak punya filesystem access | N/A |
+| **Copilot (GitHub)** | Cloud-based, no local storage | N/A |
+| **Perplexity** | Search engine, bukan agent | N/A |
+| **Poe** | Chat aggregator, no file access | N/A |
+| **Character.AI** | Entertainment, no memory system | N/A |
+| **Replika** | Social companion, no file access | N/A |
+| **Kuki** | Chatbot, no filesystem | N/A |
+| **Chatbase** | Custom chatbot builder, cloud | N/A |
+| **Botpress** | Cloud platform, limited local | N/A |
+
+### 🔑 Syarat Agent Bisa Pakai termuxlmy
+
+```
+Agent HARUS punya:
+├── ✅ File System Access (baca + tulis file)
+├── ✅ Terminal/Shell Access (jalankan script)
+├── ✅ Python Runtime (untuk SQLite)
+└── ✅ Network Access (optional, untuk sync)
+
+Agent TIDAK BISA jika:
+├── ❌ Hanya cloud-based (API saja)
+├── ❌ Tidak punya akses filesystem
+├── ❌ Tidak bisa jalankan script
+└── ❌ Hanya web interface
+```
+
+### 💡 Kenapa Ini Penting?
+
+```
+termuxlmy menggunakan:
+├── 📁 SQLite database → Universal format
+├── 📝 Markdown files → Universal format  
+├── 🐍 Python scripts → Universal runtime
+└── 🔧 Shell commands → Universal CLI
+
+Intinya: Selama agent bisa baca file & jalankan Python,
+         agent bisa pakai termuxlmy!
+```
+
+### 🌐 Skenario Penggunaan
+
+```
+LOCAL SETUP (Recommended):
+┌─────────────────────────────────┐
+│ HP/PC/Server kamu               │
+│ ├── AI Agent (Ollama/Hermes)    │
+│ ├── termuxlmy (memory system)   │
+│ └── SQLite DB (local)           │
+│                                 │
+│ ✅ Data tetap di device kamu    │
+│ ✅ Gratis                        │
+│ ✅ Private                       │
+└─────────────────────────────────┘
+
+CLOUD API (Tidak Compatible):
+┌─────────────────────────────────┐
+│ Cloud Server                    │
+│ ├── ChatGPT/Claude API          │
+│ └── Tidak ada akses ke HP kamu  │
+│                                 │
+│ ❌ Tidak bisa baca file local   │
+│ ❌ Tidak bisa simpan ke SQLite  │
+│ ❌ Data di cloud mereka         │
+└─────────────────────────────────┘
+```
 
 ## ❓ FAQ
 
