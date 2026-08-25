@@ -29,6 +29,7 @@
 </p>
 
 <p align="center">
+  <a href="README.en.md">English</a> &bull;
   <a href="#-sebelum--sesudah">Before/After</a> &bull;
   <a href="#-fitur">Fitur</a> &bull;
   <a href="#-instalasi-30-detik">Instalasi</a> &bull;
