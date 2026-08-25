@@ -417,21 +417,73 @@ conn.close()
         ;;
     
     help|--help|-h)
-        echo "🧠 termuxlmy - Local Memory for You v1.1.0"
-        echo ""
-        echo "Commands:"
-        echo "  termuxlmy setup          — Initialize memory system"
-        echo "  termuxlmy status         — Check status"
-        echo "  termuxlmy add <text>     — Add a fact"
-        echo "  termuxlmy search <query> — Search facts"
-        echo "  termuxlmy encrypt        — Encrypt database"
-        echo "  termuxlmy decrypt        — Decrypt database"
-        echo "  termuxlmy backup         — Backup to GitHub"
-        echo "  termuxlmy setup-backup   — Setup GitHub backup"
-        echo "  termuxlmy test           — Run tests"
-        echo "  termuxlmy help           — Show this help"
+        # Non-interactive fallback: show help text
+        if [[ ! -t 0 ]]; then
+            echo "🧠 termuxlmy - Local Memory for You v1.1.0"
+            echo ""
+            echo "Commands:"
+            echo "  termuxlmy setup          — Initialize memory system"
+            echo "  termuxlmy status         — Check status"
+            echo "  termuxlmy add <text>     — Add a fact"
+            echo "  termuxlmy search <query> — Search facts"
+            echo "  termuxlmy encrypt        — Encrypt database"
+            echo "  termuxlmy decrypt        — Decrypt database"
+            echo "  termuxlmy backup         — Backup to GitHub"
+            echo "  termuxlmy setup-backup   — Setup GitHub backup"
+            echo "  termuxlmy test           — Run tests"
+            echo "  termuxlmy help           — Show this help"
+            exit 0
+        fi
+
+        # Interactive menu
+        while true; do
+            echo ""
+            echo -e "🧠 ${GREEN}termuxlmy${NC} - Local Memory for You v1.1.0"
+            echo ""
+            echo "  1. Setup           — Initialize memory system"
+            echo "  2. Status          — Check status"
+            echo "  3. Add             — Add a fact"
+            echo "  4. Search          — Search facts"
+            echo "  5. Encrypt         — Encrypt database"
+            echo "  6. Decrypt         — Decrypt database"
+            echo "  7. Backup          — Backup to GitHub"
+            echo "  8. Setup Backup    — Setup GitHub backup"
+            echo "  9. Test            — Run tests"
+            echo "  0. Exit"
+            echo ""
+            read -p "  Pilih [1-9/0]: " choice
+            echo ""
+
+            case "$choice" in
+                1) bash "$0" setup ;;
+                2) bash "$0" status ;;
+                3)
+                    read -p "  Teks: " text
+                    if [ -n "$text" ]; then
+                        bash "$0" add "$text"
+                    else
+                        echo -e "  ${RED}❌ Teks tidak boleh kosong${NC}"
+                    fi
+                    ;;
+                4)
+                    read -p "  Query: " query
+                    if [ -n "$query" ]; then
+                        bash "$0" search "$query"
+                    else
+                        echo -e "  ${RED}❌ Query tidak boleh kosong${NC}"
+                    fi
+                    ;;
+                5) bash "$0" encrypt ;;
+                6) bash "$0" decrypt ;;
+                7) bash "$0" backup ;;
+                8) bash "$0" setup-backup ;;
+                9) bash "$0" test ;;
+                0) echo "👋 Sampai jumpa!"; exit 0 ;;
+                *) echo -e "  ${RED}❌ Pilihan tidak valid: $choice${NC}" ;;
+            esac
+        done
         ;;
-    
+
     *)
         echo -e "${RED}Unknown command: $1${NC}"
         echo "Run: termuxlmy help"
