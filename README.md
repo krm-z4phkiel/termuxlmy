@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <a href="README.md">Bahasa Indonesia</a> &bull;
+  <a href="README.id.md">Bahasa Indonesia</a> &bull;
   <a href="#-before--after">Before/After</a> &bull;
   <a href="#-features">Features</a> &bull;
   <a href="#-installation">Install</a> &bull;
