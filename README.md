@@ -1,593 +1,294 @@
+<p align="center" style="text-align: center">
+
 # 🧠 termuxlmy
 
-> **Local Memory for You** — Sistem ingatan lokal untuk AI Agent di Termux
+</p>
+
+<p align="center">
+  <strong>Local Memory System for AI Agents on Termux</strong>
+  <br/>
+  <em>Buat AI Agent punya ingatan seperti manusia — asosiatif, persisten, dan 100% lokal</em>
+  <br/>
+  <br/>
+  <a href="https://github.com/krm-z4phkiel/termuxlmy/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/krm-z4phkiel/termuxlmy?style=flat-square"/>
+  </a>
+  <a href="https://github.com/krm-z4phkiel/termuxlmy/stargazers">
+    <img alt="Stars" src="https://img.shields.io/github/stars/krm-z4phkiel/termuxlmy?style=flat-square"/>
+  </a>
+  <a href="https://github.com/krm-z4phkiel/termuxlmy/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/krm-z4phkiel/termuxlmy?style=flat-square"/>
+  </a>
+  <a href="https://github.com/krm-z4phkiel/termuxlmy/forks">
+    <img alt="Forks" src="https://img.shields.io/github/forks/krm-z4phkiel/termuxlmy?style=flat-square"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="#-fitur">Fitur</a> •
+  <a href="#-masalah">Masalah</a> •
+  <a href="#-solusi">Solusi</a> •
+  <a href="#-instalasi">Instalasi</a> •
+  <a href="#-cara-pakai">Cara Pakai</a> •
+  <a href="#-kompatibilitas">Kompatibilitas</a> •
+  <a href="#-kontribusi">Kontribusi</a>
+</p>
+
+---
+
+## 🎯 Masalah
 
 ```
- ╔════════════════════════════════════════════════════╗
- ║  🧠  TERMUX LMY                                   ║
- ║  Local Memory for You                              ║
- ║                                                    ║
- ║  Buat AI Agent punya ingatan seperti manusia:      ║
- ║  ✅ Asosiatif — satu fakta terhubung ke lainnya    ║
- ║  ✅ Persisten — tidak pernah lupa                  ║
- ║  ✅ Lokal — data tetap di HP kamu                  ║
- ║  ✅ Gratis — tanpa API key, tanpa cloud            ║
- ╚════════════════════════════════════════════════════╝
+Kamu pakai AI Agent (Hermes, Ollama, dll)
+│
+├── 😩 Setiap chat mulai dari nol
+├── 😩 AI tidak ingat nama kamu
+├── 😩 AI tidak ingat percakapan kemarin
+├── 😩 Kamu harus jelaskan ulang setiap kali
+└── 😩 Semua ingatan hilang saat session baru
+```
+
+> **Analogi:** Bayangkan punya teman yang setiap kali ketemu bertanya:
+> *"Siapa nama kamu?"* — Itulah AI tanpa memory.
+
+---
+
+## 💡 Solusi
+
+**termuxlmy** memberikan AI Agent ingatan seperti manusia:
+
+```
+🧠 Asosiatif     → Satu fakta terhubung ke fakta lainnya
+💾 Persisten     → Tidak pernah lupa, tersimpan selamanya
+🔒 Lokal         → Data tetap di HP kamu, tidak ke cloud
+🔍 Smart Search  → Cari ingatan dengan full-text search
+⚡ Gratis        → Tanpa API key, tanpa cloud service
 ```
 
 ---
 
-## 🤔 Latar Belakang Masalah
+## ✨ Fitur
 
-### Masalahnya
-
-```
-Kamu pakai AI Agent (Hermes, ChatGPT, Claude, dll)
-├── Setiap chat mulai dari nol
-├── AI tidak ingat percakapan kemarin
-├── AI tidak ingat nama kamu
-├── AI tidak ingat preferensi kamu
-├── Semua ingatan hilang saat session baru
-└── Kamu harus jelaskan ulang setiap kali
-```
-
-**Analogi:**
-```
-Bayangkan punya teman yang setiap kali ketemu:
-"Siapa nama kamu?"
-"Kamu kerja di mana?"
-"Kemarin kita bahas apa ya?"
-
-Itulah AI tanpa memory — FRUSTASI! 😤
-```
-
-### Kenapa Ini Terjadi?
-
-```
-AI modern (LLM) hanya punya:
-├── 📝 Working memory (context window) → terbatas, sementara
-├── ❌ Tidak ada long-term memory
-├── ❌ Tidak ada persistent storage
-└── ❌ Tidak ada associative memory
-
-Setiap session = mulai dari kosong
-```
-
-### Solusi: termuxlmy
-
-```
-termuxlmy memberikan AI Agent:
-├── 🧠 Long-term memory → ingat selamanya
-├── 🔗 Associative memory → fakta saling terhubung
-├── 💾 Persistent storage → data tersimpan lokal
-├── 🔍 Smart retrieval → ambil informasi relevan
-└── 🔒 Private → data tetap di HP kamu
-```
+| Fitur | Deskripsi |
+|-------|-----------|
+| 🧠 **Holographic Memory** | SQLite + FTS5 + trust scoring |
+| 🔗 **Knowledge Graph** | Fakta saling terhubung seperti otak |
+| 👤 **Entity Resolution** | Auto-detect orang, tools, tempat |
+| 🔗 **Cross-linking** | File memory saling referensi |
+| 📊 **Trust Scoring** | Fakta dinilai kebenarannya |
+| 🔄 **Auto-extract** | Otomatis ekstrak dari percakapan |
+| 🔍 **Full-text Search** | Cari ingatan dengan cepat |
+| 📁 **Markdown-based** | Mudah dibaca & diedit manual |
+| 🔐 **Encryption** | Enkripsi database (opsional) |
+| ☁️ **GitHub Backup** | Sync ke GitHub (opsional) |
 
 ---
 
-## 💡 Solusi: Bagaimana Cara Kerjanya
-
-### Konsep: Ingatan Manusia vs AI
-
-```
-MANUSIA:
-apel → merah, manis, buah, pohon, Newton
-↑ semua terhubung secara otomatis
-
-AI TANPA MEMORY:
-apel → ... (tidak ingat apapun)
-
-AI DENGAN TERMUX LMY:
-apel → merah, manis, buah, pohon, Newton
-↑ semua terhubung via knowledge graph
-```
-
-### Arsitektur
+## 🏗️ Arsitektur
 
 ```
 ┌─────────────────────────────────────────────┐
-│              AI AGENT (Hermes)              │
-│         Chat, Tools, Skills, etc            │
+│              AI AGENT                       │
+│     (Hermes, Ollama, LangChain, dll)        │
 └──────────────────┬──────────────────────────┘
                    │
         ┌──────────▼──────────┐
-        │    TERMUX LMY       │
+        │    termuxlmy        │
         │   Memory Layer      │
         ├─────────────────────┤
-        │ 1. Working Memory   │ ← Percakapan sekarang
-        │ 2. Episodic Memory  │ ← Kejadian masa lalu
-        │ 3. Semantic Memory  │ ← Pengetahuan umum
-        │ 4. Knowledge Graph  │ ← Hubungan antar fakta
+        │ Working Memory      │ ← Percakapan sekarang
+        │ Episodic Memory     │ ← Kejadian masa lalu
+        │ Semantic Memory     │ ← Pengetahuan umum
+        │ Knowledge Graph     │ ← Hubungan antar fakta
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
         │   LOCAL STORAGE     │
-        │   (SQLite + Files)  │
+        │   SQLite + Files    │
         │   Di HP kamu saja   │
         └─────────────────────┘
 ```
 
-### Fitur Utama
-
-| Fitur | Deskripsi | Keunggulan |
-|-------|-----------|------------|
-| **Holographic Memory** | SQLite + FTS5 + trust scoring | Cepat, lokal, gratis |
-| **Knowledge Graph** | Fakta saling terhubung | Asosiatif seperti otak |
-| **Entity Resolution** | Auto-detect orang, tools, tempat | Smart extraction |
-| **Cross-linking** | File memory saling referensi | Integrated knowledge |
-| **Trust Scoring** | Fakta dinilai kebenarannya | Reliable information |
-| **Auto-extract** | Otomatis ekstrak dari percakapan | Hands-free |
-
 ---
 
-## 📦 Bahan-Bahan Yang Perlu Di-Install
+## 📦 Instalasi
 
-### Wajib (Core)
+### Prasyarat
 
-| No | Package | Fungsi | Size |
-|----|---------|--------|------|
-| 1 | **Termux** | Terminal emulator | 30 MB |
-| 2 | **Python 3** | Runtime utama | 50 MB |
-| 3 | **Node.js** | Untuk npm packages | 40 MB |
-| 4 | **Git** | Version control | 10 MB |
+| Package | Fungsi | Size |
+|---------|--------|------|
+| [Termux](https://f-droid.org/en/packages/com.termux/) | Terminal emulator | 30 MB |
+| Python 3 | Runtime utama | 50 MB |
+| Git | Version control | 10 MB |
 
-### Memory System
-
-| No | Package | Fungsi | Size |
-|----|---------|--------|------|
-| 5 | **SQLite** | Database (sudah ada di Python) | 0 MB |
-| 6 | **FTS5** | Full-text search (built-in SQLite) | 0 MB |
-
-### Optional (Recommended)
-
-| No | Package | Fungsi | Size |
-|----|---------|--------|------|
-| 7 | **Termux:API** | Notifikasi, wake lock | 5 MB |
-| 8 | **Termux:Boot** | Auto-start on boot | 2 MB |
-| 9 | **Curl** | Download, API calls | 3 MB |
-| 10 | **OpenSSL** | Encryption | 5 MB |
-
-### Total Size
-
-```
-Wajib:     ~130 MB
-Optional:  ~15 MB
-Total:     ~145 MB
-```
-
----
-
-## 🚀 Cara Pemasangan
-
-### Langkah 1: Install Termux
-
-Download dari **F-Droid** (bukan Play Store!):
-
-```
-https://f-droid.org/en/packages/com.termux/
-```
-
-### Langkah 2: Update System
+### Quick Install
 
 ```bash
+# 1. Install dependencies
 pkg update && pkg upgrade -y
-```
+pkg install python git curl -y
 
-### Langkah 3: Install Dependencies
-
-```bash
-pkg install python git curl openssl-tool -y
-```
-
-### Langkah 4: Install termuxlmy
-
-**One-line install:**
-
-```bash
+# 2. Install termuxlmy
 bash <(curl -s https://raw.githubusercontent.com/krm-z4phkiel/termuxlmy/main/install.sh)
-```
 
-**Atau manual:**
-
-```bash
-# Clone repo
-git clone https://github.com/krm-z4phkiel/termuxlmy.git
-cd termuxlmy
-
-# Run installer
-bash install.sh
-```
-
-### Langkah 5: Setup Memory
-
-```bash
+# 3. Setup
 termuxlmy setup
 ```
 
-Ini akan:
-1. Buat folder memory di `~/.hermes/memories/`
-2. Inisialisasi SQLite database
-3. Setup knowledge graph
-4. Konfigurasi auto-extract
-
-### Langkah 6: Verifikasi
+### Manual Install
 
 ```bash
+git clone https://github.com/krm-z4phkiel/termuxlmy.git
+cd termuxlmy
+bash install.sh
+```
+
+---
+
+## 🚀 Cara Pakai
+
+### CLI Commands
+
+```bash
+# Setup pertama kali
+termuxlmy setup
+
+# Cek status
 termuxlmy status
+
+# Tambah fakta
+termuxlmy add "User adalah mahasiswa TI"
+
+# Cari ingatan
+termuxlmy search "mahasiswa"
 ```
 
-Harusnya menunjukkan:
+### Contoh Penggunaan
+
 ```
+$ termuxlmy setup
+🧠 Setting up termuxlmy...
+✅ Database initialized!
+✅ Setup complete!
+
+$ termuxlmy status
 🧠 termuxlmy Status
-├── Memory: ✅ Active (14 facts)
-├── Knowledge Graph: ✅ Active (19 entities)
-├── Cross-links: ✅ 28 connections
-├── Database: ✅ ~150 KB
-└── Auto-extract: ✅ ON
+├── Memory: 7 files
+├── Database: 155 KB
+├── Facts: 14
+├── Entities: 19
+└── Relationships: 14
+
+$ termuxlmy add "Hermes runs on Android 16"
+✅ Added: Hermes runs on Android 16
+
+$ termuxlmy search "Hermes"
+[system] Hermes runs on Android 16 (trust: 0.5)
+[tools] Hermes gateway runs on port 3000 (trust: 0.5)
 ```
 
----
-
-## 🧠 Cara Membuat Agent AI Punya Ingatan Local
-
-### Konsep Dasar
-
-```
-Agent AI kamu (Hermes/ lainnya) perlu:
-1. Memory files → simpan fakta
-2. Knowledge graph → hubungkan fakta
-3. Auto-extract → ekstrak dari percakapan
-4. Retrieval → ambil saat dibutuhkan
-```
-
-### Step-by-Step
-
-#### 1. Buat Memory Structure
-
-```bash
-# Buat folder memory
-mkdir -p ~/.hermes/memories/Sessions
-
-# Buat file utama
-cat > ~/.hermes/memories/MEMORY.md << 'EOF'
-# 🧠 Memory Hub
-
-## 👤 User
-- Nama: [nama kamu]
-- Preferensi: [yang kamu suka]
-
-## 🔧 Tools
-- [tools yang kamu pakai]
-
-## 📝 Catatan
-- [fakta penting]
-EOF
-```
-
-#### 2. Setup Holographic Database
-
-```python
-# Simpan sebagai setup_memory.py
-import sqlite3
-import os
-
-DB_PATH = os.path.expanduser("~/.hermes/memory_store.db")
-
-conn = sqlite3.connect(DB_PATH)
-c = conn.cursor()
-
-# Buat tabel
-c.execute('''CREATE TABLE IF NOT EXISTS facts (
-    fact_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    content TEXT NOT NULL,
-    category TEXT,
-    tags TEXT,
-    trust_score REAL DEFAULT 0.5,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)''')
-
-c.execute('''CREATE TABLE IF NOT EXISTS entities (
-    entity_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    entity_type TEXT,
-    aliases TEXT
-)''')
-
-c.execute('''CREATE TABLE IF NOT EXISTS fact_entities (
-    fact_id INTEGER,
-    entity_id INTEGER,
-    FOREIGN KEY (fact_id) REFERENCES facts(fact_id),
-    FOREIGN KEY (entity_id) REFERENCES entities(entity_id)
-)''')
-
-conn.commit()
-conn.close()
-print("✅ Database initialized!")
-```
-
-#### 3. Tambah Fakta Pertama
-
-```python
-# Simpan sebagai add_fact.py
-import sqlite3
-import os
-
-DB_PATH = os.path.expanduser("~/.hermes/memory_store.db")
-
-def add_fact(content, category="general"):
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    c.execute("INSERT INTO facts (content, category) VALUES (?, ?)",
-              (content, category))
-    conn.commit()
-    conn.close()
-    print(f"✅ Added: {content[:50]}...")
-
-# Contoh penggunaan
-add_fact("User adalah mahasiswa TI", "user")
-add_fact("Hermes runs on Android 16 Termux", "system")
-add_fact("RTK saves tokens via ~/bin/rtk", "tools")
-```
-
-#### 4. Setup Knowledge Graph (Cross-linking)
-
-```bash
-# Tambah wikilinks di file memory
-cat >> ~/.hermes/memories/MEMORY.md << 'EOF'
-
-## 🔗 Links
-- → [[User Profile]] — Info user
-- → [[Tools Reference]] — Semua tools
-- → [[Config Reference]] — Settings
-EOF
-```
-
-#### 5. Auto-Extract dari Percakapan
-
-```python
-# Simpan sebagai auto_extract.py
-import sqlite3
-import os
-import re
-
-DB_PATH = os.path.expanduser("~/.hermes/memory_store.db")
-
-def extract_and_store(text):
-    """Ekstrak fakta dari teks dan simpan ke database"""
-    
-    # Simple pattern matching
-    patterns = [
-        (r"nama saya (\w+)", "user"),
-        (r"saya (\w+)", "user"),
-        (r"device (\w+)", "system"),
-        (r"ip (\d+\.\d+\.\d+\.\d+)", "network"),
-    ]
-    
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    
-    for pattern, category in patterns:
-        matches = re.findall(pattern, text, re.IGNORECASE)
-        for match in matches:
-            c.execute("INSERT INTO facts (content, category) VALUES (?, ?)",
-                     (f"Extracted: {match}", category))
-    
-    conn.commit()
-    conn.close()
-```
-
-#### 6. Retrieval (Ambil Ingatan)
-
-```python
-# Simpan sebagai recall.py
-import sqlite3
-import os
-
-DB_PATH = os.path.expanduser("~/.hermes/memory_store.db")
-
-def recall(query):
-    """Cari fakta yang relevan"""
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    
-    # Full-text search
-    c.execute("""
-        SELECT content, category, trust_score 
-        FROM facts 
-        WHERE content LIKE ? 
-        ORDER BY trust_score DESC 
-        LIMIT 5
-    """, (f"%{query}%",))
-    
-    results = c.fetchall()
-    conn.close()
-    
-    return results
-
-# Contoh
-facts = recall("user")
-for content, category, trust in facts:
-    print(f"[{category}] {content} (trust: {trust})")
-```
-
----
-
-## 📁 Struktur Memory Final
+### Struktur Memory
 
 ```
 ~/.hermes/
 ├── memories/
 │   ├── MEMORY.md              ← Central hub
 │   ├── User Profile.md        ← Info user
-│   ├── Tools Reference.md     ← Tools documentation
+│   ├── Tools Reference.md     ← Tools
 │   ├── Config Reference.md    ← Settings
-│   ├── Network Setup.md       ← Network info
-│   ├── System Setup.md        ← System info
-│   ├── Communication Setup.md ← Channel setup
 │   └── Sessions/
 │       └── 2026-08-25.md      ← Daily log
-├── memory_store.db            ← Holographic database
-└── config.yaml                ← Hermes config
+├── memory_store.db            ← Database
+└── config.yaml                ← Config
 ```
 
 ---
 
-## 🔗 Contoh Knowledge Graph
+## 🔍 Kompatibilitas
 
-```
-bayue (person)
-├── mahasiswa TI
-├── HP: POCO X3 Pro
-└── IP: 192.168.1.14
+### ✅ Agent yang Kompatibel
 
-hermes (tool)
-├── runs on Android 16
-├── memory limit: 8000
-└── 15 skills installed
+| Agent | Platform | Status |
+|-------|----------|--------|
+| [Hermes](https://github.com/nousresearch/hermes-agent) | Termux/Android | ✅ |
+| [Ollama](https://ollama.ai) | Local PC/Server | ✅ |
+| [LangChain](https://langchain.com) | Framework | ✅ |
+| [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | Local | ✅ |
+| [Open Interpreter](https://github.com/OpenInterpreter/open-interpreter) | Terminal | ✅ |
+| [PrivateGPT](https://github.com/zylon-ai/private-gpt) | Local | ✅ |
+| [AnythingLLM](https://github.com/Mintplex-Labs/anything-llm) | Local | ✅ |
+| [LM Studio](https://lmstudio.ai) | Local | ✅ |
+| Custom Agent (Python) | Any | ✅ |
 
-rtk (tool)
-├── saves 982 tokens
-├── 28 commands
-└── used by hermes
+### ❌ Agent yang Tidak Kompatibel
 
-telegram (platform)
-├── channel: 5513484052
-└── connected to hermes
-```
+| Agent | Alasan |
+|-------|--------|
+| ChatGPT (API) | Cloud-only, tidak ada akses file |
+| Claude (API) | Cloud-only, tidak bisa baca file local |
+| Gemini (Web) | Tidak punya filesystem access |
+| Copilot | Cloud-based, no local storage |
+| Perplexity | Search engine, bukan agent |
+| Poe | Chat aggregator, no file access |
+| Character.AI | Entertainment, no memory system |
 
----
-
-## 📖 Dokumentasi
-
-- [Installation Guide](docs/INSTALL.md)
-- [Configuration](docs/CONFIG.md)
-- [Memory Architecture](docs/ARCHITECTURE.md)
-- [Troubleshooting](docs/TROUBLESHOOT.md)
-
----
-
-
----
-
-## 🔍 Kompatibilitas Agent AI
-
-### ✅ Agent YANG BISA Pakai termuxlmy
-
-| Agent | Platform | Akses File | Status |
-|-------|----------|-----------|--------|
-| **Hermes** | Termux/Android | ✅ Full | ✅ Compatible |
-| **Ollama** | Local PC/Server | ✅ Full | ✅ Compatible |
-| **LangChain** | Framework | ✅ Full | ✅ Compatible |
-| **AutoGPT** | Local | ✅ Full | ✅ Compatible |
-| **Open Interpreter** | Terminal | ✅ Full | ✅ Compatible |
-| **PrivateGPT** | Local | ✅ Full | ✅ Compatible |
-| **AnythingLLM** | Local | ✅ Full | ✅ Compatible |
-| **LM Studio** | Local | ✅ Full | ✅ Compatible |
-| **LocalAI** | Local | ✅ Full | ✅ Compatible |
-| **Custom Agent** | Any (Python) | ✅ Full | ✅ Compatible |
-
-### ❌ Agent YANG TIDAK BISA Pakai termuxlmy
-
-| Agent | Alasan | Solusi Alternatif |
-|-------|--------|-------------------|
-| **ChatGPT (API)** | Cloud-only, tidak ada akses file local | Pakai ChatGPT Plus + Code Interpreter |
-| **Claude (API)** | Cloud-only, tidak bisa baca file kamu | Pakai Claude Projects (limited) |
-| **Gemini (Web)** | Tidak punya filesystem access | N/A |
-| **Copilot (GitHub)** | Cloud-based, no local storage | N/A |
-| **Perplexity** | Search engine, bukan agent | N/A |
-| **Poe** | Chat aggregator, no file access | N/A |
-| **Character.AI** | Entertainment, no memory system | N/A |
-| **Replika** | Social companion, no file access | N/A |
-| **Kuki** | Chatbot, no filesystem | N/A |
-| **Chatbase** | Custom chatbot builder, cloud | N/A |
-| **Botpress** | Cloud platform, limited local | N/A |
-
-### 🔑 Syarat Agent Bisa Pakai termuxlmy
+### 🔑 Syarat Kompatibilitas
 
 ```
 Agent HARUS punya:
-├── ✅ File System Access (baca + tulis file)
-├── ✅ Terminal/Shell Access (jalankan script)
+├── ✅ File System Access (baca + tulis)
+├── ✅ Terminal/Shell Access
 ├── ✅ Python Runtime (untuk SQLite)
-└── ✅ Network Access (optional, untuk sync)
-
-Agent TIDAK BISA jika:
-├── ❌ Hanya cloud-based (API saja)
-├── ❌ Tidak punya akses filesystem
-├── ❌ Tidak bisa jalankan script
-└── ❌ Hanya web interface
-```
-
-### 💡 Kenapa Ini Penting?
-
-```
-termuxlmy menggunakan:
-├── 📁 SQLite database → Universal format
-├── 📝 Markdown files → Universal format  
-├── 🐍 Python scripts → Universal runtime
-└── 🔧 Shell commands → Universal CLI
+└── ✅ Network Access (optional)
 
 Intinya: Selama agent bisa baca file & jalankan Python,
          agent bisa pakai termuxlmy!
 ```
 
-### 🌐 Skenario Penggunaan
+---
 
-```
-LOCAL SETUP (Recommended):
-┌─────────────────────────────────┐
-│ HP/PC/Server kamu               │
-│ ├── AI Agent (Ollama/Hermes)    │
-│ ├── termuxlmy (memory system)   │
-│ └── SQLite DB (local)           │
-│                                 │
-│ ✅ Data tetap di device kamu    │
-│ ✅ Gratis                        │
-│ ✅ Private                       │
-└─────────────────────────────────┘
+## 🤔 FAQ
 
-CLOUD API (Tidak Compatible):
-┌─────────────────────────────────┐
-│ Cloud Server                    │
-│ ├── ChatGPT/Claude API          │
-│ └── Tidak ada akses ke HP kamu  │
-│                                 │
-│ ❌ Tidak bisa baca file local   │
-│ ❌ Tidak bisa simpan ke SQLite  │
-│ ❌ Data di cloud mereka         │
-└─────────────────────────────────┘
-```
+**Q: Apakah data saya aman?**
+> Ya! Semua data tersimpan lokal di HP kamu. Tidak ada yang dikirim ke cloud (kecuali kamu backup manual).
 
-## ❓ FAQ
+**Q: Berapa RAM yang dibutuhkan?**
+> Minimal 2 GB RAM. termuxlmy menggunakan ~100-200 MB.
 
-### Q: Apakah data saya aman?
-**A:** Ya! Semua data tersimpan lokal di HP kamu. Tidak ada yang dikirim ke cloud (kecuali kamu backup manual ke GitHub).
+**Q: Bisa dipakai dengan AI selain Hermes?**
+> Bisa! System ini universal. Lihat [kompatibilitas](#-kompatibilitas).
 
-### Q: Berapa RAM yang dibutuhkan?
-**A:** Minimal 2 GB RAM. Termux + Python + SQLite menggunakan ~100-200 MB.
+**Q: Apakah gratis?**
+> Ya! 100% gratis. Tidak butuh API key, tidak butuh cloud service.
 
-### Q: Bisa dipakai dengan AI selain Hermes?
-**A:** Bisa! System ini universal. Tinggal sesuaikan path folder memory.
-
-### Q: Apakah gratis?
-**A:** Ya! 100% gratis. Tidak butuh API key, tidak butuh cloud service.
+**Q: Bagaimana backup data?**
+> Gunakan `termuxlmy backup` untuk sync ke GitHub (private repo).
 
 ---
 
-## 🤝 Contributing
+## 🤝 Kontribusi
 
-Open for contributions! Fork, create branch, PR.
+Kontribusi sangat dipersilakan!
+
+1. Fork repository ini
+2. Buat branch baru (`git checkout -b fitur-baru`)
+3. Commit perubahan (`git commit -m 'Tambah fitur baru'`)
+4. Push ke branch (`git push origin fitur-baru`)
+5. Buka Pull Request
+
+---
 
 ## 📄 License
 
-MIT License - Free to use
-
-## ⭐ Support
-
-If this helps you, give a ⭐ on GitHub!
+MIT License — Lihat [LICENSE](LICENSE) untuk detail.
 
 ---
 
-*Created by [krm-z4phkiel](https://github.com/krm-z4phkiel)*
-*Made with ❤️ for Termux & AI community*
+<p align="center">
+  Dibuat dengan ❤️ untuk komunitas Termux & AI
+  <br/>
+  <br/>
+  <a href="https://github.com/krm-z4phkiel/termuxlmy">
+    <img alt="GitHub" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</p>

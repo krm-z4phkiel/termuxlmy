@@ -1,10 +1,13 @@
 #!/bin/bash
 # 🧠 termuxlmy - Local Memory for You
 
+MEMORY_DIR="$HOME/.hermes/memories"
+DB_PATH="$HOME/.hermes/memory_store.db"
+
 case "$1" in
     setup)
         echo "🧠 Setting up termuxlmy..."
-        mkdir -p ~/.hermes/memories/Sessions
+        mkdir -p "$MEMORY_DIR/Sessions"
         
         # Initialize database
         python3 << 'PYEOF'
@@ -20,20 +23,52 @@ conn.close()
 print("✅ Database initialized!")
 PYEOF
         
+        # Create MEMORY.md if not exists
+        if [ ! -f "$MEMORY_DIR/MEMORY.md" ]; then
+            cat > "$MEMORY_DIR/MEMORY.md" << 'MEMEOF'
+# 🧠 Memory Hub
+
+> Central memory — semua ingatan saling terhubung
+
+## 👤 User
+- Nama: [nama kamu]
+- Preferensi: [yang kamu suka]
+
+## 🔧 Tools
+- [tools yang kamu pakai]
+
+## 📝 Catatan
+- [fakta penting]
+MEMEOF
+            echo "✅ MEMORY.md created"
+        fi
+        
+        echo ""
         echo "✅ Setup complete!"
         echo "Run: termuxlmy status"
         ;;
     
     status)
         echo "🧠 termuxlmy Status"
-        echo "├── Memory: $(ls ~/.hermes/memories/*.md 2>/dev/null | wc -l) files"
-        echo "├── Database: $(ls -la ~/.hermes/memory_store.db 2>/dev/null | awk '{print $5}' || echo 'Not found') bytes"
-        echo "├── Sessions: $(ls ~/.hermes/memories/Sessions/*.md 2>/dev/null | wc -l) logs"
+        echo "├── Memory: $(ls $MEMORY_DIR/*.md 2>/dev/null | wc -l) files"
+        echo "├── Sessions: $(ls $MEMORY_DIR/Sessions/*.md 2>/dev/null | wc -l) logs"
+        if [ -f "$DB_PATH" ]; then
+            SIZE=$(ls -la "$DB_PATH" | awk '{print $5}')
+            FACTS=$(python3 -c "import sqlite3; conn=sqlite3.connect('$DB_PATH'); print(conn.execute('SELECT COUNT(*) FROM facts').fetchone()[0])" 2>/dev/null || echo "0")
+            echo "├── Database: ${SIZE:-0} bytes"
+            echo "├── Facts: ${FACTS:-0}"
+        else
+            echo "├── Database: Not initialized (run termuxlmy setup)"
+        fi
         ;;
     
     add)
         shift
         CONTENT="$*"
+        if [ -z "$CONTENT" ]; then
+            echo "Usage: termuxlmy add <text>"
+            exit 1
+        fi
         python3 -c "
 import sqlite3, os
 DB = os.path.expanduser('~/.hermes/memory_store.db')
@@ -49,25 +84,39 @@ print('✅ Added: $CONTENT')
     search)
         shift
         QUERY="$*"
+        if [ -z "$QUERY" ]; then
+            echo "Usage: termuxlmy search <query>"
+            exit 1
+        fi
         python3 -c "
 import sqlite3, os
 DB = os.path.expanduser('~/.hermes/memory_store.db')
 conn = sqlite3.connect(DB)
 c = conn.cursor()
 c.execute('SELECT content, category, trust_score FROM facts WHERE content LIKE ?', ('%$QUERY%',))
-for row in c.fetchall():
-    print(f'[{row[1]}] {row[0]} (trust: {row[2]})')
+results = c.fetchall()
+if results:
+    for row in results:
+        print(f'[{row[1]}] {row[0]} (trust: {row[2]})')
+else:
+    print('No results found')
 conn.close()
 "
+        ;;
+    
+    backup)
+        echo "🔄 Backup not configured yet."
+        echo "Setup GitHub backup: termuxlmy setup-backup"
         ;;
     
     *)
         echo "🧠 termuxlmy - Local Memory for You"
         echo ""
         echo "Commands:"
-        echo "  termuxlmy setup    — Initialize memory system"
-        echo "  termuxlmy status   — Check status"
+        echo "  termuxlmy setup      — Initialize memory system"
+        echo "  termuxlmy status     — Check status"
         echo "  termuxlmy add <text> — Add a fact"
-        echo "  termuxlmy search <query> — Search facts"
+        echo "  termuxlmy search <q> — Search facts"
+        echo "  termuxlmy backup     — Backup to GitHub"
         ;;
 esac
