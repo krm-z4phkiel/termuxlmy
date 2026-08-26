@@ -458,7 +458,7 @@ conn.close()
                 1) bash "$0" setup ;;
                 2) bash "$0" status ;;
                 3)
-                    read -p "  Teks (0=batal): " text
+                    read -p "  Teks (0=cancel): " text
                     [ "$text" = "0" ] && continue
                     if [ -n "$text" ]; then
                         bash "$0" add "$text"
@@ -467,7 +467,7 @@ conn.close()
                     fi
                     ;;
                 4)
-                    read -p "  Query (0=batal): " query
+                    read -p "  Query (0=cancel): " query
                     [ "$query" = "0" ] && continue
                     if [ -n "$query" ]; then
                         bash "$0" search "$query"
@@ -476,13 +476,13 @@ conn.close()
                     fi
                     ;;
                 5)
-                    read -p "  Password (0=batal): " -s pass
+                    read -p "  Password (0=cancel): " -s pass
                     echo ""
                     [ "$pass" = "0" ] && continue
                     bash "$0" encrypt <<< "$pass"
                     ;;
                 6)
-                    read -p "  Password (0=batal): " -s pass
+                    read -p "  Password (0=cancel): " -s pass
                     echo ""
                     [ "$pass" = "0" ] && continue
                     bash "$0" decrypt <<< "$pass"
@@ -490,7 +490,7 @@ conn.close()
                 7) bash "$0" backup ;;
                 8) bash "$0" setup-backup ;;
                 9) bash "$0" test ;;
-                0) echo "👋 Sampai jumpa!"; exit 0 ;;
+                0) echo "🐦‍⬛ Goodbye!"; exit 0 ;;
                 *) echo -e "  ${RED}❌ Pilihan tidak valid: $choice${NC}" ;;
             esac
         done
