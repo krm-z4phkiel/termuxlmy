@@ -191,12 +191,20 @@ termuxlmy setup
 ### Commands
 
 ```bash
-termuxlmy setup          # Initialize memory
-termuxlmy status         # Check status
-termuxlmy add "fact"     # Add a fact
-termuxlmy search "query" # Search memories
-termuxlmy backup         # Backup to GitHub
+termuxlmy                   # Interactive menu (pick by number)
+termuxlmy setup             # Initialize memory
+termuxlmy status            # Check status
+termuxlmy add "fact"        # Add a fact
+termuxlmy search "query"    # Search memories
+termuxlmy encrypt           # Encrypt database
+termuxlmy decrypt           # Decrypt database
+termuxlmy backup            # Backup to GitHub
+termuxlmy setup-backup      # Setup GitHub backup
+termuxlmy test              # Run tests
+termuxlmy help              # Show help
 ```
+
+> **Tip:** Just type `termuxlmy` to open the interactive menu — no need to remember commands!
 
 ### Example
 

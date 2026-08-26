@@ -191,12 +191,20 @@ termuxlmy setup
 ### Commands
 
 ```bash
-termuxlmy setup          # Inisialisasi memory
-termuxlmy status         # Cek status
-termuxlmy add "fakta"    # Tambah fakta
-termuxlmy search "query" # Cari ingatan
-termuxlmy backup         # Backup ke GitHub
+termuxlmy                   # Menu interaktif (pilih pakai angka)
+termuxlmy setup             # Inisialisasi memory
+termuxlmy status            # Cek status
+termuxlmy add "fakta"       # Tambah fakta
+termuxlmy search "query"    # Cari ingatan
+termuxlmy encrypt           # Enkripsi database
+termuxlmy decrypt           # Dekripsi database
+termuxlmy backup            # Backup ke GitHub
+termuxlmy setup-backup      # Setup GitHub backup
+termuxlmy test              # Jalankan test
+termuxlmy help              # Tampilkan bantuan
 ```
+
+> **Tips:** Cukup ketik `termuxlmy` untuk buka menu interaktif — tidak perlu hafal perintah!
 
 ### Contoh Penggunaan
 
