@@ -458,7 +458,8 @@ conn.close()
                 1) bash "$0" setup ;;
                 2) bash "$0" status ;;
                 3)
-                    read -p "  Teks: " text
+                    read -p "  Teks (0=batal): " text
+                    [ "$text" = "0" ] && continue
                     if [ -n "$text" ]; then
                         bash "$0" add "$text"
                     else
@@ -466,15 +467,26 @@ conn.close()
                     fi
                     ;;
                 4)
-                    read -p "  Query: " query
+                    read -p "  Query (0=batal): " query
+                    [ "$query" = "0" ] && continue
                     if [ -n "$query" ]; then
                         bash "$0" search "$query"
                     else
                         echo -e "  ${RED}❌ Query tidak boleh kosong${NC}"
                     fi
                     ;;
-                5) bash "$0" encrypt ;;
-                6) bash "$0" decrypt ;;
+                5)
+                    read -p "  Password (0=batal): " -s pass
+                    echo ""
+                    [ "$pass" = "0" ] && continue
+                    bash "$0" encrypt <<< "$pass"
+                    ;;
+                6)
+                    read -p "  Password (0=batal): " -s pass
+                    echo ""
+                    [ "$pass" = "0" ] && continue
+                    bash "$0" decrypt <<< "$pass"
+                    ;;
                 7) bash "$0" backup ;;
                 8) bash "$0" setup-backup ;;
                 9) bash "$0" test ;;
